@@ -7,8 +7,9 @@ import (
 	"go-postgres/models" // models package where User schema is defined
 	"log"
 	"net/http" // used to access the request and response object of the api
+
 	//"os"       // used to read the environment variable
-	"strconv"  // package used to covert string into int type
+	"strconv" // package used to covert string into int type
 
 	"github.com/gorilla/mux" // used to get the params from the route
 
@@ -20,7 +21,7 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = "qt4fd1229*"
+	password = "passw0rd"
 	dbname   = "gopgrest"
 )
 
@@ -36,9 +37,8 @@ func createConnection() *sql.DB {
 	err := godotenv.Load(".env")
 
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-    "password=%s dbname=%s sslmode=disable",
-    host, port, user, password, dbname)
-
+		"password=%s dbname=%s sslmode=disable",
+		host, port, user, password, dbname)
 
 	if err != nil {
 		log.Fatalf("Error loading .env file")
